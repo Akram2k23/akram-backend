@@ -29,5 +29,33 @@ public class LocService {
 		return country;
 		
 	}
+	
+	public Optional<Country> getById(int id) {
+		Optional<Country> country = countryRepo.findById(id);
+		return country;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	public Iterable<Country> getCountry() {
+		Iterable<Country> country = countryRepo.findAll();
+		
+		for(Country count : country) {
+			if(count.getC_Id() == null && count.getC_Id() == count.getState().get(count.getC_id())) {
+				
+			}
+		}
+		
+		
+		
+		
+		return country;
+		
+	}
 
 }
