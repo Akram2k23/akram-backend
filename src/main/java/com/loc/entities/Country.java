@@ -16,13 +16,13 @@ import jakarta.persistence.Table;
 public class Country {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int c_Id;
 	private String c_Name;
 	private String c_Short_Name;
 	
-	@OneToMany(targetEntity = State.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "cs_fk", referencedColumnName = "c_id")
+	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+//	@JoinColumn(name = "co_st-fk")
 	private List<State> state = new ArrayList<>();
 	
 	public Country() {

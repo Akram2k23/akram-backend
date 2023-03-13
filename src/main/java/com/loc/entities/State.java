@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -16,14 +17,21 @@ import jakarta.persistence.Table;
 public class State {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int s_Id;
 	private String s_Name;
 	private String s_Short_Name;
 	
-	@OneToMany(targetEntity = City.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "sc_fk", referencedColumnName = "s_Id")
+//	===========================  City ==========================
+	@OneToMany(mappedBy = "state", cascade = CascadeType.ALL)
+//	@JoinColumn(name = "st_ci-fk")
 	private List<City> city = new ArrayList<>();
+	
+//	============  Country ===============
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "st_co-fk")
+	private Country country;
+	
 	
 	public State() {
 		super();

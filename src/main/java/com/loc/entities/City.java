@@ -9,20 +9,31 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
 public class City {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int city_Id;
 	private String city_Name;
 	private String city_Short_Name;
 	
-	@OneToMany(targetEntity = Location.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "cl_fk", referencedColumnName = "city_Id")
+	
+	
+//	=========================  Location =========================
+	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+//	@JoinColumn(name = "cl_fk")
 	private List<Location> location = new ArrayList<>();
+	
+//	==========================  State ===========================
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ci_st-fk")
+	private State state;
+	
+	
 	
 	public City() {
 		super();

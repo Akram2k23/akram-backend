@@ -42,20 +42,17 @@ public class LocService {
 	
 	
 	
-	public Iterable<Country> getCountry() {
-		Iterable<Country> country = countryRepo.findAll();
-		
-		for(Country count : country) {
-			if(count.getC_Id() == null && count.getC_Id() == count.getState().get(count.getC_id())) {
-				
-			}
-		}
-		
-		
-		
-		
-		return country;
-		
-	}
+//	public Iterable<Country> getCountry() {
+//		Iterable<Country> country = countryRepo.findAll();
+//		
+//		for(Country count : country) {
+//			if(count.getC_Id() == 0 && count.getC_Id() == count.getState().ge {
+//				
+//			}
+//		}
+//		return country;
+//	}
+	
+	
 
 }
