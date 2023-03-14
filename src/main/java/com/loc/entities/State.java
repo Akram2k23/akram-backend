@@ -23,26 +23,27 @@ public class State {
 	private String s_Short_Name;
 	
 //	===========================  City ==========================
-	@OneToMany(mappedBy = "state", cascade = CascadeType.ALL)
+	@OneToMany //(targetEntity = City.class, mappedBy = "state", cascade = CascadeType.ALL)
 //	@JoinColumn(name = "st_ci-fk")
-	private List<City> city = new ArrayList<>();
+	private List<City> city;
 	
 //	============  Country ===============
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "st_co-fk")
+	@ManyToOne (cascade = CascadeType.ALL)
+	@JoinColumn(name = "st_co-fk", referencedColumnName = "c_Id")
 	private Country country;
-	
-	
+
 	public State() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public State(int s_Id, String s_Name, String s_Short_Name) {
+	public State(int s_Id, String s_Name, String s_Short_Name, List<City> city, Country country) {
 		super();
 		this.s_Id = s_Id;
 		this.s_Name = s_Name;
 		this.s_Short_Name = s_Short_Name;
+		this.city = city;
+		this.country = country;
 	}
 
 	public int getS_Id() {
@@ -73,13 +74,22 @@ public class State {
 		return city;
 	}
 
-	public void setCity(ArrayList<City> city) {
+	public void setCity(List<City> city) {
 		this.city = city;
+	}
+
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
 	@Override
 	public String toString() {
-		return "State [s_Id=" + s_Id + ", s_Name=" + s_Name + ", s_Short_Name=" + s_Short_Name + ", city=" + city + "]";
+		return "State [s_Id=" + s_Id + ", s_Name=" + s_Name + ", s_Short_Name=" + s_Short_Name + ", city=" + city
+				+ ", country=" + country + "]";
 	}
 
 	

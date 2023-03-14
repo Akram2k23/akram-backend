@@ -16,25 +16,27 @@ import jakarta.persistence.Table;
 public class Country {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "feedbackSeq")
 	private int c_Id;
 	private String c_Name;
 	private String c_Short_Name;
 	
-	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+	@OneToMany //(targetEntity = State.class, mappedBy = "country", cascade = CascadeType.ALL)
 //	@JoinColumn(name = "co_st-fk")
-	private List<State> state = new ArrayList<>();
-	
+	private List<State> state;
+
 	public Country() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Country(int c_Id, String c_Name, String c_Short_Name) {
+	public Country(int c_Id, String c_Name, String c_Short_Name, List<State> state) {
 		super();
 		this.c_Id = c_Id;
 		this.c_Name = c_Name;
 		this.c_Short_Name = c_Short_Name;
+		this.state = state;
 	}
 
 	public int getC_Id() {
@@ -65,7 +67,7 @@ public class Country {
 		return state;
 	}
 
-	public void setState(ArrayList<State> state) {
+	public void setState(List<State> state) {
 		this.state = state;
 	}
 
@@ -74,6 +76,7 @@ public class Country {
 		return "Country [c_Id=" + c_Id + ", c_Name=" + c_Name + ", c_Short_Name=" + c_Short_Name + ", state=" + state
 				+ "]";
 	}
+	
 	
 	
 	

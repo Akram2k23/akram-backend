@@ -24,27 +24,27 @@ public class City {
 	
 	
 //	=========================  Location =========================
-	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+	@OneToMany //(targetEntity = Location.class, mappedBy = "city", cascade = CascadeType.ALL)
 //	@JoinColumn(name = "cl_fk")
-	private List<Location> location = new ArrayList<>();
+	private List<Location> location;
 	
 //	==========================  State ===========================
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ci_st-fk")
+	@JoinColumn(name = "ci_st-fk", referencedColumnName = "s_Id")
 	private State state;
-	
-	
-	
+
 	public City() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public City(int city_Id, String city_Name, String city_Short_Name) {
+	public City(int city_Id, String city_Name, String city_Short_Name, List<Location> location, State state) {
 		super();
 		this.city_Id = city_Id;
 		this.city_Name = city_Name;
 		this.city_Short_Name = city_Short_Name;
+		this.location = location;
+		this.state = state;
 	}
 
 	public int getCity_Id() {
@@ -79,9 +79,18 @@ public class City {
 		this.location = location;
 	}
 
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
+	}
+
 	@Override
 	public String toString() {
-		return "City [city_Id=" + city_Id + ", city_Name=" + city_Name + ", city_Short_Name=" + city_Short_Name + "]";
+		return "City [city_Id=" + city_Id + ", city_Name=" + city_Name + ", city_Short_Name=" + city_Short_Name
+				+ ", location=" + location + ", state=" + state + "]";
 	}
 
 	

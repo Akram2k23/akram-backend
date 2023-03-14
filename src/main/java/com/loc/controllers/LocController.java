@@ -23,7 +23,7 @@ public class LocController {
 	private LocService locService;
 	
 	
-	@PostMapping("/save")
+	@PostMapping("/saveAllData")
 	public ResponseEntity<String> saveData(@RequestBody List<Country> country) {
 //		System.out.println(country.toString());
 		locService.saveData(country);
@@ -32,7 +32,7 @@ public class LocController {
 	}
 	
 	
-	@GetMapping("/getall")
+	@GetMapping("/getAllData")
 	public Iterable<Country> getData() {
 //		System.out.println(country.toString());
 		Iterable<Country> country = locService.getData();
@@ -50,16 +50,42 @@ public class LocController {
 	}
 	
 	
+	@GetMapping("/getAllCountry")
+	public Iterable<Country> getCountry() {
+		
+		Iterable<Country> country = locService.getCountry();
+		
+		return country;
+	}
 	
 	
+	@GetMapping("/getAllState")
+	public Iterable<Country> getState() {
+		
+		Iterable<Country> country = locService.getState();
+		
+		return country;
+	}
 	
-//	@GetMapping("/getAllCountry")
-//	public Iterable<Country> getCountry() {
-////		System.out.println(country.toString());
-//		Iterable<Country> country = locService.getCountry();
-//		
-//		return country;
-//	}
+	
+	@GetMapping("/getAllCity")
+	public Iterable<Country> getCity() {
+		
+		Iterable<Country> country = locService.getCity();
+		
+		return country;
+	}
+	
+	
+	@GetMapping("/getAllLocation")
+	public Iterable<Country> getLocation() {
+		
+		Iterable<Country> country = locService.getLocation();
+		
+		return country;
+	}
+	
+	
 	
 	
 	

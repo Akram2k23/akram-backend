@@ -10,4 +10,5 @@ public class LocProjectApplication {
 		SpringApplication.run(LocProjectApplication.class, args);
 	}
 
+	
 }
