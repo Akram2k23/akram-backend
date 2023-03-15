@@ -1,12 +1,9 @@
 package com.loc.entities;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Location {
@@ -16,49 +13,60 @@ public class Location {
 	private int locationId;
 	private String address;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "lo_ci-fk", referencedColumnName = "city_Id")
-	private City city;
-
+	
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "lo_ci-fk", referencedColumnName = "city_Id")
+//	private City city;
+	
+	
 	public Location() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Location(int locationId, String address, City city) {
+
+	public Location(int locationId, String address) {
 		super();
 		this.locationId = locationId;
 		this.address = address;
-		this.city = city;
 	}
 
+
+	/**
+	 * @return the locationId
+	 */
 	public int getLocationId() {
 		return locationId;
 	}
 
+
+	/**
+	 * @param locationId the locationId to set
+	 */
 	public void setLocationId(int locationId) {
 		this.locationId = locationId;
 	}
 
+
+	/**
+	 * @return the address
+	 */
 	public String getAddress() {
 		return address;
 	}
 
+
+	/**
+	 * @param address the address to set
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
-	public City getCity() {
-		return city;
-	}
-
-	public void setCity(City city) {
-		this.city = city;
-	}
 
 	@Override
 	public String toString() {
-		return "Location [locationId=" + locationId + ", address=" + address + ", city=" + city + "]";
+		return "Location [locationId=" + locationId + ", address=" + address + "]";
 	}
 	
 	

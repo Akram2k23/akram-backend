@@ -1,21 +1,22 @@
 package com.loc.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.loc.entities.Country;
+import com.loc.entities.State;
 import com.loc.services.LocService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class LocController {
 	
@@ -23,7 +24,7 @@ public class LocController {
 	private LocService locService;
 	
 	
-	@PostMapping("/saveAllData")
+	@PostMapping("/savealldata")
 	public ResponseEntity<String> saveData(@RequestBody List<Country> country) {
 //		System.out.println(country.toString());
 		locService.saveData(country);
@@ -32,7 +33,7 @@ public class LocController {
 	}
 	
 	
-	@GetMapping("/getAllData")
+	@GetMapping("/getalldata")
 	public Iterable<Country> getData() {
 //		System.out.println(country.toString());
 		Iterable<Country> country = locService.getData();
@@ -50,7 +51,7 @@ public class LocController {
 	}
 	
 	
-	@GetMapping("/getAllCountry")
+	@GetMapping("/getallcountry")
 	public Iterable<Country> getCountry() {
 		
 		Iterable<Country> country = locService.getCountry();
@@ -58,17 +59,29 @@ public class LocController {
 		return country;
 	}
 	
+	@GetMapping("/getstatebycountryid/{countryid}")
+	public List<State> getStateByCountryId(@PathVariable("countryid") int countryid) {
+		System.out.println("-------------- countryid ------" +countryid); 
+//		List<State> state = locService.getAllState();
+//		return state;
+		
+		return null;
+	}
 	
-	@GetMapping("/getAllState")
-	public Iterable<Country> getState() {
+
+	
+	@GetMapping("/getallstate")
+	public List<State> getAllState() {
 		
-		Iterable<Country> country = locService.getState();
+		List<State> state = locService.getAllState();
 		
-		return country;
+		return state;
 	}
 	
 	
-	@GetMapping("/getAllCity")
+	
+	
+	@GetMapping("/getallcity")
 	public Iterable<Country> getCity() {
 		
 		Iterable<Country> country = locService.getCity();
@@ -77,13 +90,22 @@ public class LocController {
 	}
 	
 	
-	@GetMapping("/getAllLocation")
+	@GetMapping("/getalllocation")
 	public Iterable<Country> getLocation() {
 		
 		Iterable<Country> country = locService.getLocation();
 		
 		return country;
 	}
+	
+	
+//	@GetMapping("/getindiastate")
+//	public Iterable<State> getindiaState() {
+//		
+//		Iterable<State> state = locService.getindiaState();
+//		
+//		return state;
+//	}
 	
 	
 	
