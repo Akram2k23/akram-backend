@@ -61,11 +61,13 @@ public class LocController {
 	
 	@GetMapping("/getstatebycountryid/{countryid}")
 	public List<State> getStateByCountryId(@PathVariable("countryid") int countryid) {
-		System.out.println("-------------- countryid ------" +countryid); 
+		List<State> state = locService.getStateByCountryId(countryid);
+		
+		
 //		List<State> state = locService.getAllState();
 //		return state;
 		
-		return null;
+		return state;
 	}
 	
 

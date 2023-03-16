@@ -20,8 +20,8 @@ public class Country {
 	private String c_Name;
 	private String c_Short_Name;
 	
-	@OneToMany (cascade = CascadeType.ALL)
-	@JoinColumn(name = "co_st-fk")
+	@OneToMany (mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
+//	@JoinColumn(name = "co_st-fk")
 	private List<State> state;
 
 	public Country() {
@@ -37,58 +37,34 @@ public class Country {
 		this.state = state;
 	}
 
-	/**
-	 * @return the c_Id
-	 */
 	public int getC_Id() {
 		return c_Id;
 	}
 
-	/**
-	 * @param c_Id the c_Id to set
-	 */
 	public void setC_Id(int c_Id) {
 		this.c_Id = c_Id;
 	}
 
-	/**
-	 * @return the c_Name
-	 */
 	public String getC_Name() {
 		return c_Name;
 	}
 
-	/**
-	 * @param c_Name the c_Name to set
-	 */
 	public void setC_Name(String c_Name) {
 		this.c_Name = c_Name;
 	}
 
-	/**
-	 * @return the c_Short_Name
-	 */
 	public String getC_Short_Name() {
 		return c_Short_Name;
 	}
 
-	/**
-	 * @param c_Short_Name the c_Short_Name to set
-	 */
 	public void setC_Short_Name(String c_Short_Name) {
 		this.c_Short_Name = c_Short_Name;
 	}
 
-	/**
-	 * @return the state
-	 */
 	public List<State> getState() {
 		return state;
 	}
 
-	/**
-	 * @param state the state to set
-	 */
 	public void setState(List<State> state) {
 		this.state = state;
 	}
@@ -98,7 +74,6 @@ public class Country {
 		return "Country [c_Id=" + c_Id + ", c_Name=" + c_Name + ", c_Short_Name=" + c_Short_Name + ", state=" + state
 				+ "]";
 	}
-	
 	
 	
 	

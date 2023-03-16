@@ -46,58 +46,34 @@ public class City {
 		this.location = location;
 	}
 
-	/**
-	 * @return the city_Id
-	 */
 	public int getCity_Id() {
 		return city_Id;
 	}
 
-	/**
-	 * @param city_Id the city_Id to set
-	 */
 	public void setCity_Id(int city_Id) {
 		this.city_Id = city_Id;
 	}
 
-	/**
-	 * @return the city_Name
-	 */
 	public String getCity_Name() {
 		return city_Name;
 	}
 
-	/**
-	 * @param city_Name the city_Name to set
-	 */
 	public void setCity_Name(String city_Name) {
 		this.city_Name = city_Name;
 	}
 
-	/**
-	 * @return the city_Short_Name
-	 */
 	public String getCity_Short_Name() {
 		return city_Short_Name;
 	}
 
-	/**
-	 * @param city_Short_Name the city_Short_Name to set
-	 */
 	public void setCity_Short_Name(String city_Short_Name) {
 		this.city_Short_Name = city_Short_Name;
 	}
 
-	/**
-	 * @return the location
-	 */
 	public List<Location> getLocation() {
 		return location;
 	}
 
-	/**
-	 * @param location the location to set
-	 */
 	public void setLocation(List<Location> location) {
 		this.location = location;
 	}
@@ -107,6 +83,8 @@ public class City {
 		return "City [city_Id=" + city_Id + ", city_Name=" + city_Name + ", city_Short_Name=" + city_Short_Name
 				+ ", location=" + location + "]";
 	}
+
+	
 	
 	
 	

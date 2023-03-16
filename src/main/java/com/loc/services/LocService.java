@@ -72,11 +72,15 @@ public class LocService {
 		return country;
 	}
 
-	public Optional<State> getStateById(int countryId) {
-		Optional<State> stateList = stateRepo.findById(countryId);
+	public List<State> getStateByCountryId(int countryId) {
+		List<State> stateList = stateRepo.findByCountryId(countryId);
 		return stateList;
 	}
 
+	
+	
+	
+	
 //	public List<State> getindiaState() {
 //		List<State> sta = new ArrayList<>();
 //
